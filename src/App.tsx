@@ -8,6 +8,7 @@ import { IProduct } from "./data/interfaces";
 import { IProductError, productValidation } from "./validation/inde";
 import ErrorMessage from "./component/ui/ErrorMessage";
 import CircleColor from "./component/ui/CircleColor";
+import { generateRandomId } from "./utils/functions";
 
 function App() {
   // State
@@ -56,12 +57,13 @@ function App() {
       price: product.price,
       imageUrl: product.imageUrl,
     });
-    console.log(errorMessages);
     setErrorMessage(errorMessages);
     const isErrorMessages =
       Object.values(errorMessages).some((value) => value === "") &&
       Object.values(errorMessages).every((value) => value === "");
       if (isErrorMessages) {
+        productList.unshift(product);
+        setProduct(defaultProductObj);
         closeModal();
       }
   };
@@ -74,7 +76,7 @@ function App() {
   // Render
 
   const renderProductList = productList.map((product) => (
-    <ProductCard key={product.id} product={product} openModal={openModal} />
+    <ProductCard key={generateRandomId()} product={product} openModal={openModal} />
   ));
   const renderFormInput = formInputList.map((input) => (
     <div className="mb-2 flex flex-col" key={input.id}>

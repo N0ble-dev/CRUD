@@ -5,7 +5,7 @@ export interface IProduct {
   imageUrl: string;
   price: string;
   colors: string[];
-  category: {
+  category?: {
     name: string;
     imageUrl: string;
   };

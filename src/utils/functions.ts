@@ -10,3 +10,7 @@ export function slicetxt(txt:string,maxLetters:number){
     if (txt.length>=maxLetters)return `${txt.slice(0, maxLetters)} ...`;
     return txt
 }
+
+export function generateRandomId() {
+    return Math.random().toString(36).substr(2, 9);
+  }
