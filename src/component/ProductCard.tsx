@@ -1,32 +1,35 @@
-import { Iproduct } from "../data/interfaces";
+import { Colors } from "../data";
+import { IProduct } from "../data/interfaces";
 import { slicetxt } from "../utils/functions";
 import Button from "./ui/Button";
+import CircleColor from "./ui/CircleColor";
 
 interface Iprops {
-  product: Iproduct;
+  product: IProduct;
+  openModal: () => void;
 }
 
-const ProductCard = ({ product }: Iprops) => {
+const ProductCard = ({ product, openModal }: Iprops) => {
+  // render
+  const circleColor=Colors.map((color)=>(<CircleColor color={color} key={color}/>))
   return (
-    <div className="border rounded-md p-2 flex md:max-w-sm max-w-80 flex-col space-y-5">
+    <div className="border rounded-lg p-2 flex md:max-w-sm max-w-80 flex-col space-y-5">
       <img className="w-full" src={product.category.imageUrl} alt="error" />
       <h3 className="text-lg font-bold">{product.title}</h3>
       <p className="text-slate-600">{slicetxt(product.description,100)}</p>
-      <div className="flex items-center space-x-2">
-        <span className={`w-6 h-6 rounded-full cursor-pointer bg-red-600`}></span>
-        <span className="w-6 h-6 rounded-full cursor-pointer bg-green-600"></span>
-        <span className="w-6 h-6 rounded-full cursor-pointer bg-slate-950"></span>
+      <div className="flex items-center flex-wrap gap-2">
+        {circleColor}
       </div>
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-bold">${product.price}</h3>
         <img className="w-12 h-12 rounded-full object-cover" src={product.category.imageUrl} alt="error" />
       </div>
       <div className="flex justify-center w-full space-x-5">
-        <Button className="bg-slate-900" onClick={() => console.log("hi")}>
-          hi
+    <Button className="bg-slate-500" onClick={() => openModal()}>
+          Edit
         </Button>
-        <Button className="bg-blue-900" onClick={() => console.log("hi")}>
-          shit
+        <Button className="bg-blue-200" onClick={() => console.log("hi")}>
+          Delete
         </Button>
       </div>
     </div>
