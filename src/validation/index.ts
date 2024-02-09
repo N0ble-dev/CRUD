@@ -10,6 +10,7 @@ export interface IProductError {
   description: string;
   price: string;
   imageUrl: string;
+  chosenColor:string|string[];
 }
 export const productValidation = (product: IProductError) => {
   const errors = {
@@ -17,6 +18,7 @@ export const productValidation = (product: IProductError) => {
     description: "",
     price: "",
     imageUrl: "",
+chosenColor:"",
   };
 
   const validUrl = /\bhttps?:\/\/\S+?\.(?:png|jpe?g|gif|bmp)(?:\?.*?)?\b/.test(
@@ -33,7 +35,7 @@ export const productValidation = (product: IProductError) => {
   }
   if (
     product.description.length < 15 ||
-    product.description.length > 200 ||
+    product.description.length > 700 ||
     typeof product.description !== "string" ||
     !product.description.trim()
   ) {
@@ -47,6 +49,9 @@ export const productValidation = (product: IProductError) => {
 
   if (isNaN(Number(product.price)) || !product.price.trim()) {
     errors.price = "Enter Valid Price";
+  }
+  if(product.chosenColor.length===0){
+    errors.chosenColor="Please Choose Color"
   }
 
   return errors;

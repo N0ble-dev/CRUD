@@ -5,14 +5,20 @@ export interface IProduct {
   imageUrl: string;
   price: string;
   colors: string[];
-  category?: {
+  category: {
     name: string;
     imageUrl: string;
   };
 }
+export type TProductName="title"|"description"|"price"|"imageUrl";
 export interface IFormInput {
   id: string;
-  name: "title" | "description" | "imageUrl" | "price";
+  name: TProductName;
   type: string;
   label: string;
+}
+export interface ICategory{
+id:string;
+name:string;
+imageUrl:string;
 }
