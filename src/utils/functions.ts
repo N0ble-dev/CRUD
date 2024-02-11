@@ -7,8 +7,10 @@
  * @return {string} the sliced text
  */
 export function slicetxt(txt:string,maxLetters:number){
-    if (txt.length>=maxLetters)return `${txt.slice(0, maxLetters)} ...`;
-    return txt
+    if (txt.length > maxLetters) {
+        return `${txt.slice(0, maxLetters)} ...`;
+    }
+    return txt;
 }
 
 export function generateRandomId() {

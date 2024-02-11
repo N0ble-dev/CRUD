@@ -4,7 +4,7 @@ import Input from "./component/ui/Input";
 import Modal from "./component/ui/Modal";
 import { Colors, categoryList, formInputList, productList } from "./data";
 import { ChangeEvent, useState, FormEvent } from "react";
-import { IProduct, TProductName } from "./interfaces";
+import { ICategory, IProduct, TProductName } from "./interfaces";
 import { IProductError, productValidation } from "./validation";
 import ErrorMessage from "./component/ui/ErrorMessage";
 import CircleColor from "./component/ui/CircleColor";
@@ -14,7 +14,7 @@ import Select from "./component/ui/Select";
 function App() {
   // State
 
-const [products,setProducts]=useState<IProduct[]>(productList);
+  const [products, setProducts] = useState<IProduct[]>(productList);
 
   const [isOpenProduct, setIsOpenProduct] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
@@ -41,11 +41,12 @@ const [products,setProducts]=useState<IProduct[]>(productList);
     chosenColor: [],
   });
 
-  const [selectedCategory, setSelectedCategory] = useState(categoryList[3]);
+  const [selectedCategory, setSelectedCategory] = useState<ICategory>(
+    categoryList[0]
+  );
 
   const [productEdit, setProdutEdit] = useState<IProduct>(defaultProductObj);
-  const[productEditIdx,setProdutEditIdx]=useState(0)
-  console.log(productEdit);
+  const [productEditIdx, setProdutEditIdx] = useState(0);
 
   // Handler
   const closeModalProduct = () => {
@@ -53,8 +54,10 @@ const [products,setProducts]=useState<IProduct[]>(productList);
   };
 
   const openModalProduct = () => {
+    setSelectedCategory(categoryList[0]);
     setIsOpenProduct(true);
   };
+  
   // Handler
   const closeModalEdit = () => {
     setIsOpenEdit(false);
@@ -68,7 +71,6 @@ const [products,setProducts]=useState<IProduct[]>(productList);
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
-      category: selectedCategory,
     });
     setErrorMessage({ ...errorMessages, [e.target.name]: "" });
   };
@@ -76,7 +78,6 @@ const [products,setProducts]=useState<IProduct[]>(productList);
     setProdutEdit({
       ...productEdit,
       [e.target.name]: e.target.value,
-      category: selectedCategory,
     });
     setErrorMessage({ ...errorMessages, [e.target.name]: "" });
   };
@@ -95,7 +96,16 @@ const [products,setProducts]=useState<IProduct[]>(productList);
       Object.values(errorMessages).some((value) => value === "") &&
       Object.values(errorMessages).every((value) => value === "");
     if (isErrorMessages) {
-      products.unshift(product);
+      // products.unshift(product);
+
+      setProduct((prev) => {
+        const prod = prev;
+        prod.category = selectedCategory;
+        return prod;
+      });
+      console.log(product);
+      setProducts((prev) => [product, ...prev]);
+
       setProduct(defaultProductObj);
       closeModalProduct();
     }
@@ -116,12 +126,19 @@ const [products,setProducts]=useState<IProduct[]>(productList);
       Object.values(errorMessages).every((value) => value === "");
 
     if (isErrorMessages) {
+      const upatedProducts = [...products];
+      setProdutEdit((prev) => {
+        const prod = prev;
+        prod.category = {
+          name: selectedCategory.name,
+          imageUrl: selectedCategory.imageUrl,
+        };
+        return prod;
+      });
+      upatedProducts[productEditIdx] = productEdit;
 
-      
-      const upatedProduct=[...products]
-      upatedProduct[productEditIdx]=productEdit
-      setProducts(upatedProduct);
-      setProdutEdit(defaultProductObj)
+      setProducts(upatedProducts);
+      setProdutEdit(defaultProductObj);
 
       closeModalEdit();
     }
@@ -131,13 +148,21 @@ const [products,setProducts]=useState<IProduct[]>(productList);
   const canselHandler = (e: FormEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     closeModalProduct();
-    closeModalEdit()
+    closeModalEdit();
     setProduct(defaultProductObj);
     setProdutEdit(defaultProductObj);
   };
+
+  // const removeProductHandler=()=>{
+  //   const filterd=products.filter(product=>product.id!==productEdit.id)
+  //   console.log(productEdit.id);
+    
+  //   setProducts(filterd)
+  
+  // }
   // Render
 
-  const renderProductList = products.map((product,idx) => (
+  const renderProductList = products.map((product, idx) => (
     <ProductCard
       key={generateRandomId()}
       product={product}
@@ -145,8 +170,10 @@ const [products,setProducts]=useState<IProduct[]>(productList);
       getDataofProduct={setProdutEdit}
       openEditModal={openModalEdit}
       setProdutEditIdx={setProdutEditIdx}
-  idx={idx}
-
+      setSelectedCategory={setSelectedCategory}
+      idx={idx}
+      products={products}
+      setProducts={setProducts}
     />
   ));
   const renderFormInput = formInputList.map((input) => (
@@ -166,21 +193,21 @@ const [products,setProducts]=useState<IProduct[]>(productList);
   ));
 
   const renderProductEdit = (id: string, label: string, name: TProductName) => {
-    return(
-    <div className="mb-1 flex flex-col" key={id}>
-      <label className="font-medium" htmlFor={id}>
-        {label}
-      </label>
-      <Input
-        id={id}
-        type="text"
-        name={name}
-        onChange={onChangeEditHandler}
-        value={productEdit[name]}
-      />
-      <ErrorMessage errorMessages={errorMessages[name]} />
-    </div>
-    )
+    return (
+      <div className="mb-1 flex flex-col" key={id}>
+        <label className="font-medium" htmlFor={id}>
+          {label}
+        </label>
+        <Input
+          id={id}
+          type="text"
+          name={name}
+          onChange={onChangeEditHandler}
+          value={productEdit[name]}
+        />
+        <ErrorMessage errorMessages={errorMessages[name]} />
+      </div>
+    );
   };
 
   const circleColor = Colors.map((color) => (
@@ -237,7 +264,7 @@ const [products,setProducts]=useState<IProduct[]>(productList);
     <div className="container">
       <div className="m-5 flex md:flex-row flex-col gap-7 flex-wrap items-center">
         <Button
-          className="bg-slate-300 text-2xl font-semibold"
+          className="bg-slate-300 text-2xl font-semibold mx-auto"
           onClick={() => openModalProduct()}
         >
           Add Product
@@ -282,7 +309,11 @@ const [products,setProducts]=useState<IProduct[]>(productList);
 
           <form onSubmit={submitEditHandler}>
             {renderProductEdit("title", "Product Title", "title")}
-            {renderProductEdit("description","Product Description","description")}
+            {renderProductEdit(
+              "description",
+              "Product Description",
+              "description"
+            )}
             {renderProductEdit("imageUrl", "Product Image Url", "imageUrl")}
             {renderProductEdit("price", "Product Price", "price")}
             <Select
@@ -297,10 +328,10 @@ const [products,setProducts]=useState<IProduct[]>(productList);
             </div>
             <ErrorMessage errorMessages={errorMessages.chosenColor as string} />
             <div className="flex items-center space-x-4 mt-4">
-              <Button type="submit" className="bg-slate-300">
+              <Button type="submit" className="bg-blue-200 ">
                 Submit
               </Button>
-              <Button className="bg-blue-200" onClick={canselHandler}>
+              <Button className="bg-slate-700 text-white" onClick={canselHandler}>
                 Cansel
               </Button>
             </div>

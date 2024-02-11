@@ -3,6 +3,8 @@ import { generateRandomId } from "../utils/functions";
 
 export const productList: IProduct[] = [
   {
+    id: generateRandomId(),
+
     title: "Product 1",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam
         tempore commodi doloremque reiciendis ipsum expedita quis quasi
@@ -14,12 +16,14 @@ export const productList: IProduct[] = [
     price: "100",
     colors: ["red", "#ab8383", "pink"],
     category: {
-      name: "Electronics",
+      name: "PlayStaion",
       imageUrl:
-        "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+        "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   },
   {
+    id: generateRandomId(),
+
     title: "Product 2",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam
         tempore commodi doloremque reiciendis ipsum expedita quis quasi
@@ -31,12 +35,14 @@ export const productList: IProduct[] = [
     price: "200",
     colors: ["gray", "black", "blue"],
     category: {
-      name: "Electronics",
+      name: "PlayStaion",
       imageUrl:
         "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   },
   {
+    id: generateRandomId(),
+
     title: "Product 2",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam
         tempore commodi doloremque reiciendis ipsum expedita quis quasi
@@ -48,12 +54,11 @@ export const productList: IProduct[] = [
     price: "200",
     colors: ["#4b0246", "green", "#b0bf36"],
     category: {
-      name: "Electronics",
+      name: "antiquities",
       imageUrl:
-        "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1707408538977-7522b6090b27?q=80&w=1506&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   },
-
 ];
 
 export const formInputList: IFormInput[] = [
@@ -100,27 +105,26 @@ export const categoryList: ICategory[] = [
   {
     id: generateRandomId(),
     name: "PlayStaion",
-    imageUrl: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    
+    imageUrl:
+      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: generateRandomId(),
     name: "Universe",
-    imageUrl: "https://images.unsplash.com/photo-1706211306695-5b383f8012a9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    
+    imageUrl:
+      "https://images.unsplash.com/photo-1706211306695-5b383f8012a9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 
   {
     id: generateRandomId(),
     name: "Football",
-    imageUrl: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    
+    imageUrl:
+      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: generateRandomId(),
     name: "antiquities",
-    imageUrl: "https://images.unsplash.com/photo-1707408538977-7522b6090b27?q=80&w=1506&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    
+    imageUrl:
+      "https://images.unsplash.com/photo-1707408538977-7522b6090b27?q=80&w=1506&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
-]
+];

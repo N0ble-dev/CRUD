@@ -13,6 +13,7 @@ export default function Modal({ children, title, isOpen, closeModal }: Iprops) {
     <>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <div className="fixed inset-0 bg-slate-950/50" aria-hidden="true" />
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

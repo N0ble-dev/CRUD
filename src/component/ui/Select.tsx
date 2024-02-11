@@ -5,17 +5,19 @@ import { HiCheck } from "react-icons/hi";
 import { categoryList } from "../../data";
 import { ICategory } from "../../interfaces";
 
-interface IProps  {
-selectedCategory:ICategory;
-setSelectedCategory:(category:ICategory)=>void
+interface IProps {
+  selectedCategory: ICategory;
+  setSelectedCategory: (category: ICategory) => void;
 }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Select({selectedCategory,setSelectedCategory}:IProps) {
-
+export default function Select({
+  selectedCategory,
+  setSelectedCategory,
+}: IProps) {
   return (
     <Listbox value={selectedCategory} onChange={setSelectedCategory}>
       {({ open }) => (
@@ -31,12 +33,12 @@ export default function Select({selectedCategory,setSelectedCategory}:IProps) {
                   alt=""
                   className="h-5 w-5 flex-shrink-0 rounded-full"
                 />
-                <span className="ml-3 block truncate">{selectedCategory.name}</span>
+                <span className="ml-3 block truncate">
+                  {selectedCategory.name}
+                </span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                <HiMiniChevronUpDown
-                  aria-hidden="true"
-                />
+                <HiMiniChevronUpDown aria-hidden="true" />
               </span>
             </Listbox.Button>
 
@@ -47,8 +49,7 @@ export default function Select({selectedCategory,setSelectedCategory}:IProps) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-                <Listbox.Options className="absolute z-10 mt-1 max-h-[250%] w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-
+              <Listbox.Options className="absolute z-10 mt-1 max-h-[250%] w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {categoryList.map((category) => (
                   <Listbox.Option
                     key={category.id}
