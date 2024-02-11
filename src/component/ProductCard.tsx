@@ -49,7 +49,7 @@ const ProductCard = ({
   ));
   return (
     <div className="border rounded-lg p-2 flex md:max-w-sm max-w-sm flex-col space-y-5">
-      <img className="w-full" src={product.imageUrl} alt="error" />
+      <img className="w-full max-h-[550px]" src={product.imageUrl} alt="error" />
       <h3 className="text-lg font-bold">{product.title}</h3>
       <p className="text-slate-600 overflow-hidden">{slicetxt(product.description, 90)}</p>
       <div className="flex items-center flex-wrap gap-2">{circleColor}</div>
