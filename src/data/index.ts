@@ -11,14 +11,14 @@ export const productList: IProduct[] = [
         voluptatem, obcaecati natus cupiditate veniam quos similique quas saepe
         aliquam dolor soluta.`,
     imageUrl:
-      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1706211306695-5b383f8012a9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
     price: "100",
     colors: ["red", "#ab8383", "pink"],
     category: {
-      name: "PlayStaion",
+      name: "Universe",
       imageUrl:
-        "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1706211306695-5b383f8012a9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   },
   {
@@ -43,13 +43,13 @@ export const productList: IProduct[] = [
   {
     id: generateRandomId(),
 
-    title: "Product 2",
+    title: "Product 3",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam
         tempore commodi doloremque reiciendis ipsum expedita quis quasi
         voluptatem, obcaecati natus cupiditate veniam quos similique quas saepe
         aliquam dolor soluta.`,
     imageUrl:
-      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1707408538977-7522b6090b27?q=80&w=1506&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
     price: "200",
     colors: ["#4b0246", "green", "#b0bf36"],
